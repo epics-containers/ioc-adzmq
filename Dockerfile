@@ -1,6 +1,6 @@
 ARG IMAGE_EXT
 
-ARG BASE=7.0.9ec3
+ARG BASE=7.0.8ad3
 ARG REGISTRY=ghcr.io/epics-containers
 ARG RUNTIME=${REGISTRY}/epics-base${IMAGE_EXT}-runtime:${BASE}
 ARG DEVELOPER=${REGISTRY}/epics-base${IMAGE_EXT}-developer:${BASE}
@@ -31,6 +31,27 @@ RUN ansible.sh pvlogging
 
 COPY ibek-support/autosave/ autosave
 RUN ansible.sh autosave
+
+COPY ibek-support/asyn/ asyn
+RUN ansible.sh asyn
+
+COPY ibek-support/busy/ busy
+RUN ansible.sh busy
+
+COPY ibek-support/sscan/ sscan
+RUN ansible.sh sscan
+
+COPY ibek-support/calc/ calc
+RUN ansible.sh calc
+
+COPY ibek-support/ADCore/ ADCore
+RUN ansible.sh ADCore
+
+COPY ibek-support/ADCore ADCore
+RUN ansible.sh ADCore
+
+COPY ibek-support/ADZMQ ADZMQ
+RUN ansible.sh ADZMQ
 
 # get the ioc source and build it
 COPY ioc ${SOURCE_FOLDER}/ioc
