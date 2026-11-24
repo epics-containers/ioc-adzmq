@@ -3,6 +3,8 @@
 # services/bl22b-di-zmq-01/config/ioc.yaml at commit d0dcb4438f9d1565434f4ae225fec683620f61c6
 # Changed, so that nobody running this test reaches a real device:
 # - 1 device address replaced with 127.0.0.1
+# Changed to fit the current image (the source was written for 2025.7.1):
+# - ADCore.NDPvaPlugin renamed ADCore.NDPvxsPlugin (ibek-support 654c18a)
 # tests/run-tests.sh runs it with start.sh --test, which generates the
 # runtime assets but does not launch the IOC.
 
@@ -117,7 +119,7 @@ entities:
     R: ":HDF5:"
     TIMEOUT: 1
 
-  - type: ADCore.NDPvaPlugin
+  - type: ADCore.NDPvxsPlugin
     P: BL22B-DI-CAM-10
     R: ":PVA:"
     PORT: BOX3.WINCAM.pva
